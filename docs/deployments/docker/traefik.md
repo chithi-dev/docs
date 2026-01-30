@@ -18,6 +18,49 @@ Here is a ready to use docker file that can be used to deploy your site:
 
 ```yaml
 services:
+    traefik:
+        image: traefik:v3.6.7
+        container_name: traefik
+        restart: unless-stopped
+        ports:
+            - '80:80'
+            - '443:443/tcp'
+            - '443:443/udp'
+        command:
+            - '--providers.docker=true'
+            - '--providers.docker.exposedbydefault=false'
+            - '--entrypoints.web.address=:80'
+            - '--entrypoints.websecure.address=:443'
+
+            # Enable dashboard
+            - '--api.dashboard=true'
+            - '--api.insecure=true'
+
+            # Enable http/3
+            - '--entrypoints.websecure.http3=true'
+
+            # Experimental FastProxy
+            - '--experimental.fastProxy'
+
+            # 🐞 Info logs
+            - '--log.level=INFO'
+
+            # 🔁 Global redirect
+            - '--entrypoints.web.http.redirections.entrypoint.to=websecure'
+            - '--entrypoints.web.http.redirections.entrypoint.scheme=https'
+
+            # --- Add these lines for Let's Encrypt ---
+            - '--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json'
+            - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web'
+
+            # Disable timeout
+            - '--entrypoints.websecure.transport.respondingTimeouts.readTimeout=0'
+            - '--entrypoints.websecure.transport.respondingTimeouts.idleTimeout=0'
+
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+            - letsencrypt:/letsencrypt
+
     postgres:
         image: postgres:18
         container_name: postgres-db
@@ -97,7 +140,6 @@ services:
         labels:
             - 'traefik.enable=true'
             - 'traefik.http.routers.backend.rule=Host(`<your_domain>`) && PathPrefix(`/api`)'
-
 
             # This middleware strips /api from the URL before it hits the container
             - 'traefik.http.middlewares.api-strip.stripprefix.prefixes=/api'
@@ -189,6 +231,7 @@ volumes:
     postgres_data:
     redis_data:
     rustfs:
+    letsencrypt:
 ```
 
 Please replace `<your_domain>` with the actual domain you are going to use to point to chithi instance.
