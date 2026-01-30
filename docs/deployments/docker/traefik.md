@@ -195,3 +195,5 @@ volumes:
 ```
 
 Please replace `<your_domain>` with the actual domain you are going to use to point to chithi instance.
+
+If you still have any issues around hosting your instances, please open a [discussion](https://github.com/chithi-dev/chithi/discussions/categories/q-a)
