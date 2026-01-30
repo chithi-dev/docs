@@ -8,6 +8,8 @@
 
 [project]
 
+repo_url = "https://github.com/chithi-dev/chithi"
+repo_name = "chithi-dev/chithi"
 # The site_name is shown in the page header and the browser window title
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_name
@@ -309,9 +311,9 @@ repo = "fontawesome/brands/github"
 # ----------------------------------------------------------------------------
 # The "extra" section contains miscellaneous settings.
 # ----------------------------------------------------------------------------
-#[[project.extra.social]]
-#icon = "fontawesome/brands/github"
-#link = "https://github.com/user/repo"
+# [[project.extra.social]]
+# icon = "fontawesome/brands/github"
+# link = "https://github.com/chithi-dev/chithi"
 
 [project.extra]
 alternate = [{ name = "English", link = "/en/", lang = "en" }]
