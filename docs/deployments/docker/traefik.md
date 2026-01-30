@@ -1,7 +1,8 @@
 ---
-title: 'Docker+Traefik'
 icon: simple/traefikproxy
 ---
+
+# Traefik
 
 This is the most straight forward way to host chithi instances.
 
@@ -89,7 +90,7 @@ services:
             retries: 3
 
     backend:
-        image: ghcr.io/chithi-dev/chithi-backend:0.0.43
+        image: ghcr.io/chithi-dev/chithi-backend:latest
         container_name: backend
         restart: unless-stopped
         command: /bin/sh /app/scripts/start_backend.sh
@@ -140,7 +141,7 @@ services:
             - default
 
     celery:
-        image: ghcr.io/chithi-dev/chithi-backend:0.0.43
+        image: ghcr.io/chithi-dev/chithi-backend:latest
         container_name: celery
         restart: unless-stopped
         command: /bin/sh /app/scripts/start_celery.sh
@@ -153,7 +154,7 @@ services:
             backend:
                 condition: service_started
     beat:
-        image: ghcr.io/chithi-dev/chithi-backend:0.0.43
+        image: ghcr.io/chithi-dev/chithi-backend:latest
         container_name: beat
         restart: unless-stopped
         command: /bin/sh /app/scripts/start_celery_beat.sh
@@ -169,7 +170,7 @@ services:
                 condition: service_started
 
     frontend:
-        image: ghcr.io/chithi-dev/chithi-frontend-node:0.0.43
+        image: ghcr.io/chithi-dev/chithi-frontend-node:latest
         container_name: frontend
         restart: unless-stopped
         labels:
