@@ -11,30 +11,30 @@
 # The site_name is shown in the page header and the browser window title
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_name
-site_name = "Documentation"
+site_name = "Chithi"
 
 # The site_description is included in the HTML head and should contain a
 # meaningful description of the site content for use by search engines.
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_description
-site_description = "A new project generated from the default template project."
+site_description = "The next generation encrypted file sharing project"
 
 # The site_author attribute. This is used in the HTML head element.
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_author
-site_author = "<your name here>"
+site_author = "baseplate-admin"
 
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-#site_url = "https://www.example.com/"
+site_url = "https://docs.chithi.dev/"
 
 # The copyright notice appears in the page footer and can contain an HTML
 # fragment.
 #
 # Read more: https://zensical.org/docs/setup/basics/#copyright
 copyright = """
-Copyright &copy; 2026 The authors
+Copyright &copy; 2026 The chithi authors
 """
 
 # Zensical supports both implicit navigation and explicitly defined navigation.
@@ -194,7 +194,7 @@ features = [
     # In order to provide a better user experience on slow connections when
     # using instant navigation, a progress indicator can be enabled.
     # https://zensical.org/docs/setup/navigation/#progress-indicator
-    #"navigation.instant.progress",
+    "navigation.instant.progress",
 
     # When navigation paths are activated, a breadcrumb navigation is rendered
     # above the title of each page
@@ -240,7 +240,7 @@ features = [
     # When anchor following for the table of contents is enabled, the sidebar
     # is automatically scrolled so that the active anchor is always visible.
     # https://zensical.org/docs/setup/navigation/#anchor-following
-    # "toc.follow",
+    "toc.follow",
 
     # When navigation integration for the table of contents is enabled, it is
     # always rendered as part of the navigation sidebar on the left.
@@ -258,14 +258,24 @@ features = [
 # - https://zensical.org/docs/setup/colors/
 # ----------------------------------------------------------------------------
 [[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+# Palette toggle for light mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
 scheme = "default"
 toggle.icon = "lucide/sun"
 toggle.name = "Switch to dark mode"
 
+# Palette toggle for dark mode
 [[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
 scheme = "slate"
 toggle.icon = "lucide/moon"
-toggle.name = "Switch to light mode"
+toggle.name = "Switch to system preference"
+
 
 # ----------------------------------------------------------------------------
 # In the "font" subsection you can configure the fonts used. By default, fonts
@@ -274,8 +284,8 @@ toggle.name = "Switch to light mode"
 # a monospaced font used in code blocks.
 # ----------------------------------------------------------------------------
 #[project.theme.font]
-#text = "Inter"
-#code = "Jetbrains Mono"
+text = "Inter"
+code = "Jetbrains Mono"
 
 # ----------------------------------------------------------------------------
 # You can configure your own logo to be shown in the header using the "logo"
@@ -302,5 +312,3 @@ toggle.name = "Switch to light mode"
 #[[project.extra.social]]
 #icon = "fontawesome/brands/github"
 #link = "https://github.com/user/repo"
-
-
