@@ -98,8 +98,6 @@ services:
             - 'traefik.enable=true'
             - 'traefik.http.routers.backend.rule=Host(`<your_domain>`) && PathPrefix(`/api`)'
 
-            # The proxy netwrok
-            - 'traefik.docker.network=proxy'
 
             # This middleware strips /api from the URL before it hits the container
             - 'traefik.http.middlewares.api-strip.stripprefix.prefixes=/api'
@@ -137,7 +135,6 @@ services:
             rustfs:
                 condition: service_healthy
         networks:
-            - proxy
             - default
 
     celery:
