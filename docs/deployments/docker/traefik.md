@@ -192,21 +192,6 @@ services:
                 condition: service_healthy
             backend:
                 condition: service_started
-    beat:
-        image: ghcr.io/chithi-dev/chithi-backend:latest
-        container_name: beat
-        restart: unless-stopped
-        command: /bin/sh /app/scripts/start_celery_beat.sh
-        environment: *backend-variable
-        depends_on:
-            celery:
-                condition: service_started
-            postgres:
-                condition: service_healthy
-            redis:
-                condition: service_healthy
-            backend:
-                condition: service_started
 
     frontend:
         image: ghcr.io/chithi-dev/chithi-frontend-node:latest
