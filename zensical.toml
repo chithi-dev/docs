@@ -46,6 +46,27 @@ Copyright &copy; 2026 The chithi authors
 # can be defined using TOML syntax.
 #
 # Read more: https://zensical.org/docs/setup/navigation/
+nav = [
+    { "Introduction" = 'index.md' },
+    { "Architecture" = "architecture.md" },
+    { "Deployments" = [
+        { "Docker" = [
+            { "Traefik" = "deployments/docker/traefik.md" },
+        ] },
+    ] },
+    { "Backend" = [
+        { "Architecture" = "backend/architecture.md" },
+        { "License" = "backend/license.md" },
+    ] },
+    { "Frontend" = [
+        { "Architecture" = "frontend/architecture.md" },
+        { "License" = "frontend/license.md" },
+    ] },
+    { "Transparency" = [
+        { "AI" = "transparency/ai.md" },
+    ] },
+
+]
 # nav = [
 #   { "Get started" = "index.md" },
 #   { "Markdown in 5min" = "markdown.md" },

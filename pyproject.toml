@@ -11,3 +11,4 @@ dev = ["poethepoet>=0.40.0"]
 
 [tool.poe.tasks]
 dev = "zensical serve"
+build = 'zensical build --clean'
